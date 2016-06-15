@@ -132,6 +132,10 @@ class AndrolateTranslateTask extends DefaultTask {
             return
         }
 
+        if (!file.getName().equals('strings.xml')) {
+            return;
+        }
+
         def List<AndrolateBaseElement> stringsdirty = new ArrayList<AndrolateBaseElement>()
         def children = srcxml.getChildNodes()
         if (children && children.length) {
