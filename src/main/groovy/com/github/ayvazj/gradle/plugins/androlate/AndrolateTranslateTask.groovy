@@ -179,6 +179,13 @@ class AndrolateTranslateTask extends DefaultTask {
         osw.close()
         */
 
+        // update md5
+        def outwriter = new FileWriter(file.getPath())
+        def fos = new FileOutputStream(file.getPath());
+        def osw = new OutputStreamWriter(fos,"UTF-8");
+        XmlUtil.serialize(srcxml, outwriter)
+        osw.close()
+
         androlate.targetLanguages.each { lang ->
             def destdir = new File("${dir.path}-${lang}")
             def destfile = new File("${destdir.path}/${file.getName()}")
