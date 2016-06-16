@@ -76,7 +76,9 @@ abstract class AndrolateBaseElement {
 
             if (existing) {
                 existing.each { Element existstring ->
-                    existstring.setNodeValue(AndrolateUtils.googleTranslateResolve(translatedResources[0].getTranslatedText()))
+                    def new_str = AndrolateUtils.googleTranslateResolve(translatedResources[0].getTranslatedText())
+                    existstring.setNodeValue(new_str)
+                    println('newString: ' + new_str + ' - NodeText: ' + existstring.getTextContent());
                 }
             } else {
                 def Element newelem = destxml.getOwnerDocument().createElement('string')
