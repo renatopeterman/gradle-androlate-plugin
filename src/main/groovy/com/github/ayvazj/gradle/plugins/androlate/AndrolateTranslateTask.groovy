@@ -162,6 +162,7 @@ class AndrolateTranslateTask extends DefaultTask {
         srcxml.setAttribute("xmlns:${Androlate.NAMESPACE.prefix}", Androlate.NAMESPACE.getUri().toString())
 
         // save the modified source file
+        /*
         def backfn = AndrolateUtils.findBackupFilename(file)
         if (!backfn) {
             throw new GradleScriptException("Unable to create backup file")
@@ -176,12 +177,13 @@ class AndrolateTranslateTask extends DefaultTask {
         def osw = new OutputStreamWriter(fos,"UTF-8");
         XmlUtil.serialize(srcxml, outwriter)
         osw.close()
+        */
 
         androlate.targetLanguages.each { lang ->
             def destdir = new File("${dir.path}-${lang}")
             def destfile = new File("${destdir.path}/${file.getName()}")
 
-            println ("Dest file: " + "${destdir.path}/${file.getName()}");
+            //println ("Dest file: " + "${destdir.path}/${file.getName()}");
 
             destdir.mkdirs()
             def destparser
