@@ -66,7 +66,8 @@ abstract class AndrolateBaseElement {
      * @return
      */
     def public void updateDestXml(Element destxml, List<TranslationsResource> translatedResources) {
-        if ("string".equals(this.node.getNodeName()) && !'false'.equals(this.node.getAttribute('translatable'))) {
+        //if ("string".equals(this.node.getNodeName()) && !'false'.equals(this.node.getAttribute('translatable'))) {
+        if ("string".equals(this.node.getNodeName())) {
             def string_name = this.node.getAttribute('name')
             def existing = null
             def string_elems = destxml.getElementsByTagName('string')
