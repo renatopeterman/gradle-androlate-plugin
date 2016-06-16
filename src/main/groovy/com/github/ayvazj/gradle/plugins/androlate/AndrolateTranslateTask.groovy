@@ -188,6 +188,7 @@ class AndrolateTranslateTask extends DefaultTask {
             destdir.mkdirs()
             def destparser
 
+            /*
             if (destfile.exists()) {
                 def destreader = new FileReader(destfile)
                 try {
@@ -204,6 +205,14 @@ class AndrolateTranslateTask extends DefaultTask {
                 catch (Exception e) {
                     throw new GradleScriptException("Error parsing ${destfile}", e)
                 }
+            }
+            */
+
+            try {
+                destparser = DOMBuilder.newInstance(false, true).parseText('''<?xml version='1.0' encoding='utf-8'?>\n<resources></resources>''')
+            }
+            catch (Exception e) {
+                throw new GradleScriptException("Error parsing ${destfile}", e)
             }
 
             def destxml = destparser.documentElement
